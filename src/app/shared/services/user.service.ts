@@ -44,7 +44,11 @@ import { User } from "app/shared/models/user";
 /**
  * update user
  */
-
+  updateUser(user: User): Observable<User> {
+    return this.http.put(`${this.usersUrl}/${user.id}`, user)
+    .map(res => res.json())
+    .catch(this.handleError);
+  }
   
 
 /**
