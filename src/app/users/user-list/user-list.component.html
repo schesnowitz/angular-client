@@ -5,7 +5,7 @@
   <div class="col-sm-4" *ngFor='let user of users'>
     <div class="user-card text-center" [routerLink]="['/users', user.id]"> <!--brackets are used because we are passing the :id "parameter binding"-->
       <img class="user-image img-rounded" [src]="user.avatar">
-      <h2>{{user.first_name}} {{user.last_name}}</h2>
+      <h2>{{user.name}} <small class="">{{user.username}}</small></h2> 
     </div>
 
   </div>

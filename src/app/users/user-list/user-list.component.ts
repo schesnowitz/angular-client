@@ -16,8 +16,9 @@ export class UserListComponent implements OnInit {
 
     constructor(private service: UserService) {}
 
-    ngOnInit() { 
-        this.service.getUsers()
-        .subscribe(users => this.users = users);
-    }
+  ngOnInit() { 
+    this.service.getUsers()
+      .subscribe(users => this.users = users);   
+
+	}
 }

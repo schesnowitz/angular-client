@@ -11,28 +11,64 @@ import { User } from "app/shared/models/user";
     constructor(private http: Http) { }
 
 
-    // get all Users
+/**
+ * Get all the users
+ */
       getUsers(): Observable<User[]> {
         return this.http.get(this.usersUrl) 
           .map(response => response.json().data)
+          .map(users => users.map(this.toUser))
             .catch(this.handleError); 
     }
-    // get single User
+/**
+ * get single User--------------------------------------------------------------------
+ */
+ 
 
-    getUser(id: number): Observable<User> {
-      return this.http.get(`${this.usersUrl}/${id}`)
-        .map(res => res.json().data)
-          .catch(this.handleError);
-    }
+  getUser(id: number): Observable<User> {
+    return this.http.get(`${this.usersUrl}/${id}`)
+      .map(res => res.json().data)
+      .map(this.toUser)
+      .catch(this.handleError);
+  }
 
-    // create user
+/**
+ * END get single User--------------------------------------------------------------------
+ */
 
-    // update user
+/**
+ *  create user
+ * -------------------------------------------------------------------------------------
+ */
 
-    // delete user
+/**
+ * update user
+ */
 
-    // Handle API Errors
+  
 
+/**
+ * delete user
+ */
+
+
+
+/** 
+ * convert user info from api to our standards
+*/
+  private toUser(user): User {
+    return {
+      id: user.id,
+      name: `${user.first_name} ${user.last_name}`,
+      username: user.first_name,
+      avatar: user.avatar
+    };
+  }
+
+
+/**
+ * API error handeling
+ */
     private handleError(err) {
     let errMessage: string;
 
