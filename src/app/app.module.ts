@@ -11,6 +11,7 @@ import { UserService } from "app/shared/services/user.service";
 import { UsersComponent } from "app/users/users-component/users/users.component";
 import { UserSingleComponent } from "app/users/user-single/user-single.component";
 import { UserEditComponent } from "app/users/user-edit/user-edit.component";
+import { UserCreateComponent } from "app/users/user-create/user-create.component";
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -27,7 +28,8 @@ import 'rxjs/add/observable/throw';
     UsersComponent,
     UserListComponent,
     UserSingleComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

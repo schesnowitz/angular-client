@@ -6,7 +6,7 @@
 // }
 
 export class User {
-  id: number; 
+  id?: number; 
   name: string; 
   username: string;
   avatar: string 
