@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from "app/users/user-list/user-list.component";
 import { routing } from "app/app.routing";
+//import { Observable } from 'rxjs/Observable';
 
 import { UserService } from "app/shared/services/user.service";
 import { UsersComponent } from "app/users/users-component/users/users.component";
@@ -14,7 +15,7 @@ import { UserEditComponent } from "app/users/user-edit/user-edit.component";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
-
+import 'rxjs/add/observable/throw';
 
 
 

@@ -45,7 +45,8 @@ import { User } from "app/shared/models/user";
  * update user
  */
   updateUser(user: User): Observable<User> {
-    return this.http.put(`${this.usersUrl}/${user.id}`, user)
+    return this.http.put(`${this.usersUrl}/${user.id}`, user) 
+    // return this.http.get(`${this.usersUrl}/23`) //test error from reqres.in
     .map(res => res.json())
     .catch(this.handleError);
   }
@@ -79,7 +80,7 @@ import { User } from "app/shared/models/user";
     if (err instanceof Response) {
       let body = err.json() || '';
       let error = body.error || JSON.stringify(body);
-      errMessage = `${err.status} - ${err.statusText} || ''} ${error}`;
+      errMessage = `${err.status} - ${err.statusText || ''} ${error}`;
     } else {
       errMessage = err.message ? err.message : err.toString();
     }
