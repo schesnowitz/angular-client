@@ -62,7 +62,10 @@ import { User } from "app/shared/models/user";
  * delete user
  */
 
-
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.usersUrl}/${id}`)
+    .catch(this.handleError);
+  }
 
 /** 
  * convert user info from api to our standards
