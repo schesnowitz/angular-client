@@ -8,9 +8,11 @@ import { routing } from "app/app.routing";
 
 import { UserService } from "app/shared/services/user.service";
 import { UsersComponent } from "app/users/users-component/users/users.component";
+import { UserSingleComponent } from "app/users/user-single/user-single.component";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
+
 
 
 
@@ -19,7 +21,8 @@ import 'rxjs/add/operator/catch';
   declarations: [
     AppComponent,
     UsersComponent,
-    UserListComponent
+    UserListComponent,
+    UserSingleComponent
   ],
   imports: [
     BrowserModule,
