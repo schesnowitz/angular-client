@@ -15,12 +15,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {}  
 
   /**
    * Login a user
    */
   login() {
+    this.errorMessage = '';
+
     this.service.login(this.credentials.username, this.credentials.password)
       .subscribe(
         data => {
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
           console.log(data); 
         },
         err => {
+          this.errorMessage = err;
           console.error(err);
         }
       );

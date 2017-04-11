@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from "@angular/http";
+import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 import { User } from './shared/models/user';
-import { UserService } from "app/shared/services/user.service";
+import { UserService } from './shared/services/user.service';
+import { AuthService } from './shared/services/auth.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,10 +14,28 @@ import { UserService } from "app/shared/services/user.service";
 })
 export class AppComponent implements OnInit {
   users: User[];
-  constructor(private service: UserService) {}
+  constructor(    private userService: UserService, 
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.service.getUsers()
+    this.userService.getUsers()
       .subscribe(users => this.users = users);
    }
+  /**
+   * Is the user logged in?
+   */
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+
+  /**
+   * Log the user out
+   */
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
