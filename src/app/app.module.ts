@@ -12,12 +12,16 @@ import { UsersComponent } from "app/users/users-component/users/users.component"
 import { UserSingleComponent } from "app/users/user-single/user-single.component";
 import { UserEditComponent } from "app/users/user-edit/user-edit.component";
 import { UserCreateComponent } from "app/users/user-create/user-create.component";
+import { LoginComponent } from "app/login/login.component"; 
+import { AuthService } from "app/shared/services/auth.service";
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
+
+
 
 
 
@@ -29,7 +33,8 @@ import 'rxjs/add/operator/do';
     UserListComponent,
     UserSingleComponent,
     UserEditComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import 'rxjs/add/operator/do';
     HttpModule,
     routing
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
