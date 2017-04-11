@@ -1,1 +1,9 @@
+<div class="container">
+  <div *ngIf="successMessage" class='alert alert-success'>{{ successMessage }}</div>
+  <div *ngIf="deletedMessage" class='alert alert-info'>{{ deletedMessage }}</div>
+  
+</div>
+
 <router-outlet></router-outlet><!-- this outlet is for the children-->
+
+

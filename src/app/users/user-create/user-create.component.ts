@@ -18,20 +18,21 @@ export class UserCreateComponent implements OnInit {
 
     ngOnInit() { } //nothing has to happen in ng as we are creating new user
 
-    /**
-     * create a user
-     */
+  /**
+   * Create a user
+   */
+  createUser() {
+    this.successMessage = '';
+    this.errorMessage   = '';
 
-    createUser() {
-			this.successMessage = '';
-    	this.errorMessage = '';
-      this.service.createUser(this.user)
-				.subscribe(user => {
-					this.successMessage = "The User was created";
-					console.log('user created');					
-					//navigate back to users page see import of router and constructor
-					this.router.navigate(['/users']);
+    this.service.createUser(this.user)
+      .subscribe(user => {
+        this.successMessage = 'User was created!';
+        console.log('user was created');
 
-				})
-    }
+        // navigate back to the users page
+        this.router.navigate(['/users']);
+      })
+  }
+
 }
