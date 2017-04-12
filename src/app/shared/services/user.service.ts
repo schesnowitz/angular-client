@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
 import { User } from "app/shared/models/user";
@@ -41,8 +41,19 @@ constructor(private http: Http) { }
  */
  
 
+
+
+
   getUser(id: number): Observable<User> {
-    return this.http.get(`${this.usersUrl}/${id}`)
+
+// auth token start
+      let headers = new Headers(); //new headers object
+      let token = localStorage.getItem('auth_token');
+      headers.append('Content-Type', 'Application/json' );
+      headers.append('Authorization', `Bearar ${token}`);
+// auth toke end
+
+    return this.http.get(`${this.usersUrl}/${id}`, { headers })
       .map(res => res.json().data)
       .map(this.toUser)
       .catch(this.handleError);
